@@ -8,15 +8,55 @@ import {
 
 const Home = () => {
   return (
-    <ScrollView>
-      <View>
-        <Text> Lista </Text>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+      }}
+    >
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          // flex: 1,
+          borderWidth: 1,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 30,
+          }}
+        >
+          GitHub List
+        </Text>
       </View>
-      <FlatList
-        data={[10, 20, 30]}
-        renderItem={({item}) => <View><Text>{item}</Text></View>}
-      />
-    </ScrollView>
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <FlatList
+          data={[
+            {
+              id: 1,
+              name: 'a',
+            },
+            {
+              id: 2,
+              name: 'b',
+            },
+            {
+              id: 3,
+              name: 'c',
+            }
+          ]}
+          renderItem={({item}) => <View style={{ borderBottomWidth: 1, borderColor: '#C1C1C1' }}><Text style={{ fontSize: 26 }}>{item.name}</Text></View>}
+          style={{
+            flex: 1,
+          }}
+        />
+      </View>
+    </View>
   );
 }
 
