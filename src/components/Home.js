@@ -6,12 +6,29 @@ import {
   FlatList,
 } from 'react-native';
 
+const list =
+[
+  {
+    id: 1,
+    name: 'a',
+  },
+  {
+    id: 2,
+    name: 'b',
+  },
+  {
+    id: 3,
+    name: 'c',
+  }
+];
+
 const Home = () => {
   return (
     <View
       style={{
         flex: 1,
         flexDirection: 'column',
+        margin: 10,
       }}
     >
       <View
@@ -19,7 +36,6 @@ const Home = () => {
           justifyContent: 'center',
           alignItems: 'center',
           // flex: 1,
-          borderWidth: 1,
         }}
       >
         <Text
@@ -36,20 +52,7 @@ const Home = () => {
         }}
       >
         <FlatList
-          data={[
-            {
-              id: 1,
-              name: 'a',
-            },
-            {
-              id: 2,
-              name: 'b',
-            },
-            {
-              id: 3,
-              name: 'c',
-            }
-          ]}
+          data={list}
           renderItem={({item}) => <View style={{ borderBottomWidth: 1, borderColor: '#C1C1C1' }}><Text style={{ fontSize: 26 }}>{item.name}</Text></View>}
           style={{
             flex: 1,

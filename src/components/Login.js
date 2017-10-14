@@ -6,8 +6,13 @@ import {
   TextInput,
   TouchableHighlight,
   Image,
+  Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 import styled from 'styled-components/native';
+
+import AuthenticateUser from '../actions/AuthenticateUser';
+import Navigate from '../actions/Navigate';
 
 // const Login = () => {
 class Login extends PureComponent {
@@ -20,11 +25,24 @@ class Login extends PureComponent {
   }
 
   onTextChange = (text) => {
-    this.setState({ ...text });
+    this.setState({ text });
+  };
+
+  onLoginButtonPress = () => {
+    const { navigate } = this.props.navigation;
+    Navigate(navigate, 'Home');
+
+    // const { login, password } = this.state;
+    // AuthenticateUser(login, password)
+    // .then((token) => {
+    //   Navigate(navigate, 'Home', { token });
+    // })
+    // .catch(error =>{
+    //   alert(error);
+    // });
   };
 
   render() {
-    const { navigate } = this.props.navigation;
     // const StyledInput = styled.TextInput`
     //   flex: 1;
     // `;
@@ -40,9 +58,15 @@ class Login extends PureComponent {
         contentContainerStyle={{
           flex: 1,
           //  flexDirection: 'column',
+          
           justifyContent: 'space-between',
         }}
       >
+        <KeyboardAvoidingView 
+          behavior='height'
+          keyboardVerticalOffset={70}
+          style={{ flex: 1}}
+        >
         <View
           style={{
             justifyContent: 'center',
@@ -80,7 +104,7 @@ class Login extends PureComponent {
             }}
             placeholder={'login'}
             autoCorrect={false}
-            onChangeText={(text) => this.onTextChange(text)}
+            onChangeText={login => this.setState({login})}
             value={this.state.login}
             underlineColorAndroid='transparent'
           />
@@ -94,17 +118,18 @@ class Login extends PureComponent {
             }}
             placeholder={'password'}
             autoCorrect={false}
-            onChangeText={(text) => this.onTextChange(text)}
+            onChangeText={password => this.setState({password})}
             value={this.state.password}
             underlineColorAndroid='transparent'
             secureTextEntry={true}
           />
           <TouchableHighlight 
-            onPress={() => navigate('Home', { name: 'Jane' })}
+            onPress={() => this.onLoginButtonPress()}
             style={{
               backgroundColor: '#970053',
               flex: 1,
               alignSelf: 'center',
+              justifyContent: 'center',
               padding: 10,
               marginBottom: 10,
               borderWidth: 1,
@@ -124,6 +149,7 @@ class Login extends PureComponent {
             </Text>
           </TouchableHighlight>
         </View>
+      </KeyboardAvoidingView>
       </ScrollView>
     )
   }
