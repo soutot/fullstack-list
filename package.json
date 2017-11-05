@@ -6,11 +6,25 @@
     "@storybook/addon-actions": "^3.2.12",
     "@storybook/addon-links": "^3.2.12",
     "@storybook/react-native": "^3.2.12",
+    "babel-plugin-relay": "^1.4.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "7.1.0",
+    "eslint-config-prettier": "^2.4.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react-native": "2.0.0",
+    "eslint": "^4.10.0",
     "jest-expo": "~20.0.0",
+    "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
     "react-dom": "16.0.0-alpha.12",
     "react-native-scripts": "1.3.1",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "react-test-renderer": "16.0.0-alpha.12",
+    "relay-compiler": "^1.4.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -19,7 +33,8 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "storybook": "storybook start -p 7007"
+    "storybook": "storybook start -p 7007",
+    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql"
   },
   "jest": {
     "preset": "jest-expo"
@@ -32,6 +47,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
     "react-navigation": "^1.0.0-beta.13",
+    "react-relay": "^1.4.1",
     "styled-components": "^2.2.1"
   }
 }
