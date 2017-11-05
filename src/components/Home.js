@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, Text, ScrollView, FlatList } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import List from '../actions/List';
 
@@ -12,7 +13,8 @@ class Home extends PureComponent {
   }
 
   componentWillMount() {
-    List(this.props.token).then(listData => {
+    console.log('props', this.props);
+    List(this.props.navigation.state.params.name).then(listData => {
       this.setState({
         listData
       });
@@ -28,6 +30,24 @@ class Home extends PureComponent {
           margin: 10
         }}
       >
+        <View
+          style={{
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            alignSelf: 'stretch',
+            flexDirection: 'row'
+          }}
+        >
+          <Ionicons name="ios-person" size={20} color="#000000" />
+          <Text
+            style={{
+              fontSize: 12,
+              marginLeft: 10
+            }}
+          >
+            {this.props.navigation.state.params.name.toUpperCase()}
+          </Text>
+        </View>
         <View
           style={{
             justifyContent: 'center',

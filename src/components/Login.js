@@ -30,66 +30,19 @@ class Login extends PureComponent {
 
   onLoginButtonPress = () => {
     const { navigate } = this.props.navigation;
-    Navigate(navigate, 'Home', { token: '1' });
+    // Navigate(navigate, 'Home', { token: '1' });
 
-    // const { login, password } = this.state;
-    // AuthenticateUser(login, password)
-    // .then((token) => {
-    //   Navigate(navigate, 'Home', { token });
-    // })
-    // .catch(error =>{
-    //   alert(error);
-    // });
+    const { login, password } = this.state;
+    AuthenticateUser(login, password)
+      .then(data => {
+        const name = data[0].node.name;
+        console.log('name:', name);
+        Navigate(navigate, 'Home', { name });
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
-
-  // create = ({ baseUrl, headers = {} }) => {
-  //   // Default options for the Fetch API
-  //   // https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch
-  //   const defaults = {
-  //     mode: baseUrl ? 'cors' : 'same-origin',
-  //     credentials: baseUrl ? 'include' : 'same-origin',
-  //     headers: {
-  //       ...headers,
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   };
-
-  //   // Configure Relay environment
-  //   const environment = new Environment({
-  //     handlerProvider: null,
-  //     network: Network.create((
-  //       operation,
-  //       variables /* cacheConfig, uploadables */
-  //     ) =>
-  //       fetch(`${baseUrl}/graphql`, {
-  //         ...defaults,
-  //         method: 'POST',
-  //         body: JSON.stringify({
-  //           query: operation.text, // GraphQL text from input
-  //           variables
-  //         })
-  //       }).then(x => x.json())
-  //     ),
-  //     store: new Store(new RecordSource())
-  //   });
-
-  //   return {
-  //     environment,
-  //     fetch: (url, options) =>
-  //       fetch(`${baseUrl}${url}`, {
-  //         ...defaults,
-  //         ...options,
-  //         headers: {
-  //           ...defaults.headers,
-  //           ...(options && options.headers)
-  //         }
-  //       }),
-  //     fetchQuery: fetchQuery.bind(undefined, environment),
-  //     commitMutation: commitMutation.bind(undefined, environment),
-  //     commitLocalUpdate: commitLocalUpdate.bind(undefined, environment)
-  //   };
-  // };
 
   render() {
     // const StyledInput = styled.TextInput`

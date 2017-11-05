@@ -28,7 +28,6 @@ const List = user => {
       }
     `
   ).then(data => {
-    console.log('data.users.edges', data.users.edges);
     return data.users.edges;
   });
 };
