@@ -1,0 +1,22 @@
+{
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 80,
+  "prettier.semi": true,
+  "prettier.useTabs": false,
+  "prettier.bracketSpacing": true,
+  "prettier.tabWidth": 2,
+  "editor.tabSize": 2,
+  "files.autoSave": "off",
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "search.exclude": {
+    "node_modules": true
+  },
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true,
+  "files.exclude": {
+    "node_modules": true
+  }
+}
