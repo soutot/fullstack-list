@@ -18,26 +18,15 @@ React Native (create-react-native-app) list app using GraphQL + Relay Modern
 This project authentication just checks whether the typed login matches the user's name. A fency authentication can be developed from this basic structure
 
 ## Add users
-<<<<<<< HEAD
 While mutation to add user is not available, you can run the following command to create 2 users "Tiago" and "Souto"
 
 
 (if 'database' and 'user' collection doesn't already exits):
 
-=======
-While mutation for add user is not available, you can run the following command to create 2 users "Tiago" and "Souto"
-
-
-(if 'database' and 'user' collection doesn't already exits)
->>>>>>> 63de3879f39f2b133dc27b8c3d6d9f20ba599e4a
 ```use database```
 
 ```db.creteCollection("user")```
 
-<<<<<<< HEAD
-Then:
-=======
->>>>>>> 63de3879f39f2b133dc27b8c3d6d9f20ba599e4a
 ```
 db.user.insertMany({ "_id" : ObjectId("587cf02e6424a517ffe372e8"), "updatedAt" : ISODate("2017-01-16T16:09:18.771Z"), "createdAt" : ISODate("2017-01-16T16:09:18.771Z"), "name" : "souto", "email" : "souto@entria.com.br", "password" : "$2a$08$VLMOIRjOU/21JW7nJL3xSu8kx8B1RuijrbakMJKZZXjqDQE4yQRza", "active" : true, "__v" : 0 }, { "_id" : ObjectId("587cb65f7d2c45152c962ff8"), "updatedAt" : ISODate("2017-01-16T12:02:39.358Z"), "createdAt" : ISODate("2017-01-16T12:02:39.358Z"), "name" : "tiago", "email" : "tiago@entria.com.br", "password" : "$2a$08$7DgC9b/RbQXow364VoQltOo4ScD7SeZQSvzz431uP2i3hpauMQZeK", "active" : true, "__v" : 0 })
 ```
