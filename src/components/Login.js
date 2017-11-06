@@ -35,7 +35,6 @@ class Login extends PureComponent {
 
   onLoginButtonPress = () => {
     const { navigate } = this.props.navigation;
-    // Navigate(navigate, 'Home', { token: '1' });
 
     const { login, password } = this.state;
     AuthenticateUser(login, password)
