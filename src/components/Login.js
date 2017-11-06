@@ -7,12 +7,17 @@ import {
   TouchableHighlight,
   Image,
   Alert,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  StyleSheet
 } from 'react-native';
 import styled from 'styled-components/native';
 
-import AuthenticateUser from '../actions/AuthenticateUser';
-import Navigate from '../actions/Navigate';
+import AuthenticateUser from '../helpers/AuthenticateUser';
+import Navigate from '../helpers/Navigate';
+
+import ContentSection from './common/ContentSection';
+import StyledInput from './common/StyledInput';
+import StyledButton from './common/StyledButton';
 
 // const Login = () => {
 class Login extends PureComponent {
@@ -36,7 +41,6 @@ class Login extends PureComponent {
     AuthenticateUser(login, password)
       .then(data => {
         const name = data[0].node.name;
-        console.log('name:', name);
         Navigate(navigate, 'Home', { name });
       })
       .catch(error => {
@@ -45,124 +49,80 @@ class Login extends PureComponent {
   };
 
   render() {
-    // const StyledInput = styled.TextInput`
-    //   flex: 1;
-    // `;
-
-    // const StyledButton = styled.TouchableHighlight`
-    //   backgroundColor: #970053,
-    //   flex: 1,
-    //   alignSelf: center
-    // `;
-
     return (
-      <ScrollView
-        contentContainerStyle={{
-          flex: 1,
-          //  flexDirection: 'column',
-
-          justifyContent: 'space-between'
-        }}
-      >
+      <ScrollView contentContainerStyle={styles.containerStyle}>
         <KeyboardAvoidingView
           behavior="padding"
           keyboardVerticalOffset={65}
-          style={{ flex: 1 }}
+          style={styles.keyboard}
         >
-          <View
-            style={{
-              justifyContent: 'center',
-              alignContent: 'center',
-              flex: 2
-            }}
-          >
+          <ContentSection>
             <Image
               style={styles.logo}
               source={require('../images/entria-logo.png')}
             />
-            <Text
-              style={{
-                fontSize: 30,
-                alignSelf: 'center'
-              }}
-            >
-              entria
-            </Text>
-          </View>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignContent: 'center',
-              flex: 1
-            }}
-          >
-            <TextInput
-              style={{
-                flex: 1,
-                fontSize: 30,
-                margin: 10,
-                borderBottomColor: '#970053',
-                borderBottomWidth: 1
-              }}
-              placeholder={'login'}
-              autoCorrect={false}
-              onChangeText={login => this.setState({ login })}
-              value={this.state.login}
-              underlineColorAndroid="transparent"
-            />
-            <TextInput
-              style={{
-                flex: 1,
-                fontSize: 30,
-                margin: 10,
-                borderBottomColor: '#970053',
-                borderBottomWidth: 1
-              }}
-              placeholder={'password'}
-              autoCorrect={false}
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-              underlineColorAndroid="transparent"
-              secureTextEntry={true}
-            />
-            <TouchableHighlight
-              onPress={() => this.onLoginButtonPress()}
-              style={{
-                backgroundColor: '#970053',
-                flex: 1,
-                alignSelf: 'center',
-                justifyContent: 'center',
-                padding: 10,
-                marginBottom: 10,
-                borderWidth: 1,
-                borderColor: 'rgba(0,0,0,0)',
-                borderRadius: 10
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 30,
-                  alignContent: 'center',
-                  justifyContent: 'center',
-                  color: '#FFFFFF'
-                }}
-              >
-                Login
-              </Text>
-            </TouchableHighlight>
-          </View>
+            <Text style={styles.logoText}>entria</Text>
+          </ContentSection>
+          <ContentSection>
+            <View style={styles.flex1}>
+              <StyledInput
+                placeholder={'login'}
+                autoCorrect={false}
+                onChangeText={login => this.setState({ login })}
+                value={this.state.login}
+                underlineColorAndroid="transparent"
+              />
+              <StyledInput
+                placeholder={'password'}
+                autoCorrect={false}
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+                underlineColorAndroid="transparent"
+                secureTextEntry={true}
+              />
+            </View>
+            <View style={styles.buttonContainer}>
+              <StyledButton onPress={() => this.onLoginButtonPress()}>
+                <Text style={styles.buttonText}>Login</Text>
+              </StyledButton>
+            </View>
+          </ContentSection>
         </KeyboardAvoidingView>
       </ScrollView>
     );
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    justifyContent: 'space-between'
+  },
+  keyboard: { flex: 1 },
   logo: {
     width: 200,
     height: 200,
     alignSelf: 'center',
     justifyContent: 'center'
+  },
+  logoText: {
+    fontSize: 30,
+    alignSelf: 'center'
+  },
+  flex1: { flex: 1 },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 30,
+    alignContent: 'center',
+    justifyContent: 'center',
+    color: '#FFFFFF'
   }
-};
+});
+
+export const UI = Login;
+
 export default Login;

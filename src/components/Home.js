@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { View, Text, ScrollView, FlatList } from 'react-native';
+import { View, Text, ScrollView, FlatList, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import List from '../actions/List';
+import FetchList from '../helpers/FetchList';
+import List from './List';
 
 class Home extends PureComponent {
   constructor(props) {
@@ -13,8 +14,7 @@ class Home extends PureComponent {
   }
 
   componentWillMount() {
-    console.log('props', this.props);
-    List(this.props.navigation.state.params.name).then(listData => {
+    FetchList(this.props.navigation.state.params.name).then(listData => {
       this.setState({
         listData
       });
@@ -23,68 +23,52 @@ class Home extends PureComponent {
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          margin: 10
-        }}
-      >
-        <View
-          style={{
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
-            alignSelf: 'stretch',
-            flexDirection: 'row'
-          }}
-        >
+      <View style={styles.contentContainer}>
+        <View style={styles.myProfileContainer}>
           <Ionicons name="ios-person" size={20} color="#000000" />
-          <Text
-            style={{
-              fontSize: 12,
-              marginLeft: 10
-            }}
-          >
+          <Text style={styles.myProfileText}>
             {this.props.navigation.state.params.name.toUpperCase()}
           </Text>
         </View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center'
-            // flex: 1,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 30
-            }}
-          >
-            GitHub List
-          </Text>
+        <View style={styles.listHeader}>
+          <Text style={styles.listHeaderText}>User List</Text>
         </View>
-        <View
-          style={{
-            flex: 1
-          }}
-        >
-          <FlatList
-            data={this.state.listData}
-            renderItem={({ item }) => {
-              return (
-                <View style={{ borderBottomWidth: 1, borderColor: '#C1C1C1' }}>
-                  <Text style={{ fontSize: 26 }}>{item.node.name}</Text>
-                </View>
-              );
-            }}
-            style={{
-              flex: 1
-            }}
-          />
+        <View style={styles.flex1}>
+          <List data={this.state.listData} />
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    margin: 10
+  },
+  myProfileContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    alignSelf: 'stretch',
+    flexDirection: 'row'
+  },
+  myProfileText: {
+    fontSize: 12,
+    marginLeft: 10
+  },
+  listHeader: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  listHeaderText: {
+    fontSize: 30
+  },
+  flex1: {
+    flex: 1
+  }
+});
+
+export const UI = Home;
 
 export default Home;

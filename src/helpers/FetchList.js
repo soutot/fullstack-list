@@ -1,22 +1,13 @@
 import React from 'react';
-import {
-  graphql,
-  Environment,
-  Network,
-  RecordSource,
-  Store,
-  fetchQuery,
-  commitMutation,
-  commitLocalUpdate
-} from 'relay-runtime';
+import { graphql, Environment, fetchQuery } from 'relay-runtime';
 
 import environment from '../environment';
 
-const List = user => {
+const FetchList = user => {
   return fetchQuery(
     environment,
     graphql`
-      query ListQuery {
+      query FetchListQuery {
         users {
           edges {
             node {
@@ -32,4 +23,4 @@ const List = user => {
   });
 };
 
-export default List;
+export default FetchList;

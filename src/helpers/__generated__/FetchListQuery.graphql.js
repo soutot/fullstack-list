@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 46a46f9cf1213c5d76582681424ec3cb
+ * @relayHash 43d5f7a2e089c0e4247cc75bbbd269a0
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type ListQueryResponse = {|
+export type FetchListQueryResponse = {|
   +users: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -23,7 +23,7 @@ export type ListQueryResponse = {|
 
 
 /*
-query ListQuery {
+query FetchListQuery {
   users {
     edges {
       node {
@@ -40,7 +40,7 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ListQuery",
+    "name": "FetchListQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -95,11 +95,11 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "ListQuery",
+  "name": "FetchListQuery",
   "query": {
     "argumentDefinitions": [],
     "kind": "Root",
-    "name": "ListQuery",
+    "name": "FetchListQuery",
     "operation": "query",
     "selections": [
       {
@@ -151,7 +151,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ListQuery {\n  users {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n}\n"
+  "text": "query FetchListQuery {\n  users {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;
