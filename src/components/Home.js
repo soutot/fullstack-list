@@ -13,6 +13,11 @@ class Home extends PureComponent {
     };
   }
 
+  static navigationOptions = {
+    title: 'User List',
+    headerLeft: null
+  };
+
   componentWillMount() {
     FetchList(this.props.navigation.state.params.name).then(listData => {
       this.setState({
@@ -30,9 +35,7 @@ class Home extends PureComponent {
             {this.props.navigation.state.params.name.toUpperCase()}
           </Text>
         </View>
-        <View style={styles.listHeader}>
-          <Text style={styles.listHeaderText}>User List</Text>
-        </View>
+
         <View style={styles.flex1}>
           <List data={this.state.listData} />
         </View>
@@ -56,13 +59,6 @@ const styles = StyleSheet.create({
   myProfileText: {
     fontSize: 12,
     marginLeft: 10
-  },
-  listHeader: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  listHeaderText: {
-    fontSize: 30
   },
   flex1: {
     flex: 1
