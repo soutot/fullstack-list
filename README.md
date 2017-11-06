@@ -21,7 +21,7 @@ This project authentication just checks whether the typed login matches the user
 While mutation to add user is not available, you can run the following command to create 2 users "Tiago" and "Souto"
 
 
-(if 'database' and 'user' collection doesn't already exits):
+(if 'database' and 'user' collection don't already exits):
 
 ```use database```
 
