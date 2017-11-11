@@ -2,3 +2,4 @@ node_modules/
 .expo/
 npm-debug.*
 __generated__/
+.bash_profile
